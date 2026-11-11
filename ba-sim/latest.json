@@ -1,4 +1,12 @@
 {
-  "latest": null,
+  "latest": {
+    "version": "0.1.0",
+    "date": "2026-11-11",
+    "size": 85504960,
+    "sha256": "c6d5c7681b886534ca4a8ed4c64355fced08a69a8964df65c8e558144166bad1",
+    "url": "https://lumizeta.github.io/ba-sim/BA-Battle-Sim-0.1.0.apk",
+    "requires": "Android 8.0+ (API 26), arm64",
+    "notes": "First Android build, not yet tested on a device. The first launch unpacks about 300 MB of data."
+  },
   "older": []
 }

@@ -62,8 +62,10 @@ ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
       <dt>Version</dt><dd id="ver">—</dd>
       <dt>Date</dt><dd id="date">—</dd>
       <dt>Size</dt><dd id="size">—</dd>
+      <dt>Requires</dt><dd id="req">—</dd>
       <dt>SHA-256</dt><dd class="hash" id="sha">—</dd>
     </dl>
+    <div class="note" id="notes" hidden></div>
     <div class="status" id="status">Loading…</div>
   </section>
 
@@ -100,6 +102,8 @@ ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
       $("date").textContent = b.date;
       $("size").textContent = mb(b.size);
       $("sha").textContent = b.sha256;
+      $("req").textContent = b.requires || "Android";
+      if (b.notes) { $("notes").textContent = b.notes; $("notes").hidden = false; }
       $("status").textContent = "";
       const older = (d.older || []).filter(o => o.url);
       if (older.length) {

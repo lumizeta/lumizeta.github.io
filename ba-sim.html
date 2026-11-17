@@ -57,18 +57,16 @@ ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 
   <section class="card" aria-labelledby="latest-label">
     <div class="label" id="latest-label">Latest build</div>
-    <a class="download" id="dl" href="#" aria-disabled="true">Download APK</a>
+    <a class="download" id="dl" href="https://github.com/lumizeta/lumizeta.github.io/releases/latest">Download APK</a>
     <dl>
-      <dt>Version</dt><dd id="ver">—</dd>
+      <dt>Build</dt><dd id="ver">—</dd>
       <dt>Date</dt><dd id="date">—</dd>
       <dt>Size</dt><dd id="size">—</dd>
-      <dt>Requires</dt><dd id="req">—</dd>
+      <dt>Requires</dt><dd>Android 8.0+ (API 26), arm64</dd>
       <dt>SHA-256</dt><dd class="hash" id="sha">—</dd>
     </dl>
-    <div class="note" id="notes" hidden></div>
-    <div class="note" id="signin" hidden>This build is on GitHub Releases. Sign in to GitHub in this browser first —
-      otherwise the link shows "Page not found".</div>
     <div class="status" id="status">Loading…</div>
+    <a class="status" href="https://github.com/lumizeta/lumizeta.github.io/releases">All builds on GitHub</a>
   </section>
 
   <section class="card" aria-labelledby="install-label">
@@ -92,30 +90,35 @@ ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
 (function () {
   const $ = id => document.getElementById(id);
   const mb = b => (b / 1048576).toFixed(1) + " MB";
-  fetch("ba-sim/latest.json?ts=" + Date.now(), { cache: "no-store" })
+  // Builds live on this repo's GitHub Releases (public, no sign-in). The button already points at
+  // /releases/latest; when the API answers, it is upgraded to the APK file itself and the details are filled in.
+  const apkOf = rel => (rel.assets || []).find(a => /\.apk$/i.test(a.name));
+  const day = iso => (iso || "").slice(0, 10);
+  fetch("https://api.github.com/repos/lumizeta/lumizeta.github.io/releases?per_page=4")
     .then(r => { if (!r.ok) throw new Error(r.status); return r.json(); })
-    .then(d => {
-      const b = d.latest;
-      if (!b) { $("status").textContent = "No build has been uploaded yet."; return; }
+    .then(list => {
+      const rels = list.filter(r => !r.draft && apkOf(r));
+      if (!rels.length) { $("status").textContent = "No build has been uploaded yet."; return; }
+      const rel = rels[0], apk = apkOf(rel);
       const dl = $("dl");
-      dl.href = b.url; dl.setAttribute("aria-disabled", "false");
-      dl.textContent = "Download APK · " + b.version;
-      $("ver").textContent = b.version;
-      $("date").textContent = b.date;
-      $("size").textContent = mb(b.size);
-      $("sha").textContent = b.sha256;
-      $("req").textContent = b.requires || "Android";
-      if (b.notes) { $("notes").textContent = b.notes; $("notes").hidden = false; }
-      if (/^https:\/\/github\.com\//.test(b.url)) $("signin").hidden = false;
+      dl.href = apk.browser_download_url;
+      dl.textContent = "Download APK · " + rel.tag_name;
+      $("ver").textContent = apk.name.replace(/\.apk$/i, "");
+      $("date").textContent = day(rel.published_at);
+      $("size").textContent = mb(apk.size);
+      $("sha").textContent = (apk.digest || "").replace(/^sha256:/, "") || "—";
       $("status").textContent = "";
-      const older = (d.older || []).filter(o => o.url);
+      const older = rels.slice(1, 4);
       if (older.length) {
         $("older-card").hidden = false;
-        $("older").innerHTML = older.map(o =>
-          `<a href="${o.url}">${o.version}</a> <span class="status">· ${o.date} · ${mb(o.size)}</span>`).join("<br>");
+        $("older").innerHTML = older.map(r => {
+          const a = apkOf(r);
+          return `<a href="${a.browser_download_url}">${r.tag_name}</a> ` +
+            `<span class="status">· ${day(r.published_at)} · ${mb(a.size)}</span>`;
+        }).join("<br>");
       }
     })
-    .catch(() => { $("status").textContent = "Could not load the build list. Try again later."; });
+    .catch(() => { $("status").textContent = "Details unavailable right now — the button still opens the latest build."; });
 })();
 </script>
 </body>

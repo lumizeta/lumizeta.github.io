@@ -1,0 +1,159 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<title>Emberwatch for Android</title>
+<link rel="icon" href="emberwatch-icon.png">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans:ital,wght@0,400;0,500;0,700;0,800;1,800&display=swap" rel="stylesheet">
+<style>
+/* Same Blue Archive design language as the lore site and the Emberwatch app (EmberwatchRust, crates/ember_app/src/baui.rs). */
+:root {
+  --page-top: #f3f8fc; --page-bottom: #d3e9f7; --panel: #ffffff; --panel-soft: #f4f7fa; --line: #d5dae4;
+  --navy: #2d4664; --navy-light: #466399; --navy-deep: #153757; --slate: #6b7d94; --blue: #0f88bc;
+  --yellow: #f6e94b; --yellow-top: #fbf386; --yellow-deep: #ffc91f; --brown: #4b2116;
+  --shadow: 0 3px 10px rgba(12, 22, 34, .16);
+  --mono: ui-monospace, "Cascadia Mono", Consolas, monospace;
+  color-scheme: light;
+}
+* { box-sizing: border-box; }
+body {
+  margin: 0; color: var(--navy); background: linear-gradient(180deg, var(--page-top), var(--page-bottom)) fixed;
+  min-height: 100vh; font: 16px/1.55 "Noto Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  padding: max(24px, env(safe-area-inset-top)) max(16px, env(safe-area-inset-right))
+           max(32px, env(safe-area-inset-bottom)) max(16px, env(safe-area-inset-left));
+}
+main { max-width: 560px; margin: 0 auto; display: grid; gap: 16px; }
+.back { font-size: 14px; font-weight: 700; color: var(--blue); text-decoration: none; }
+h1 { font-size: 28px; line-height: 1.2; margin: 6px 0 0; font-weight: 800; font-style: italic; text-transform: uppercase; letter-spacing: .03em; }
+.sub { color: var(--slate); margin: 0; }
+.title-row { display: flex; align-items: center; gap: 14px; margin-top: 6px; }
+.title-row h1 { margin: 0; }
+.app-icon { width: 64px; height: 64px; border-radius: 16px; box-shadow: var(--shadow); flex: none; }
+.card { background: var(--panel); border: 1px solid #e1e7ee; border-radius: 10px; box-shadow: var(--shadow); padding: 0 18px 18px; display: grid; gap: 14px; overflow: hidden; }
+/* navy header bar with slanted lighter ends */
+.label {
+  position: relative; margin: 0 -18px; padding: 8px 30px; background: var(--navy); color: #fff;
+  font-size: 15px; font-weight: 700; letter-spacing: .02em;
+}
+.label::before, .label::after { content: ""; position: absolute; top: 0; bottom: 0; background: var(--navy-light); }
+.label::before { left: 0; width: 24px; clip-path: polygon(0 0, 100% 100%, 0 100%); }
+.label::after { right: 0; width: 16px; clip-path: polygon(0 0, 100% 0, 100% 100%); }
+/* the yellow main button, brown text */
+.download {
+  display: flex; align-items: center; justify-content: center; gap: 10px;
+  min-height: 56px; padding: 0 20px; border-radius: 9px; border: 1px solid #e5c82a;
+  background: linear-gradient(180deg, var(--yellow-top), var(--yellow)); color: var(--brown);
+  box-shadow: 0 3px 6px rgba(12, 22, 34, .22); font-weight: 800; font-size: 18px; text-decoration: none;
+  position: relative; overflow: hidden;
+}
+.download::after {
+  content: ""; position: absolute; right: 0; top: 0; bottom: 0; width: 40%;
+  background: linear-gradient(90deg, rgba(255, 201, 31, 0), rgba(255, 201, 31, .55));
+  clip-path: polygon(22% 0, 100% 0, 100% 100%, 0 100%);
+}
+.download:active { transform: translateY(1px); box-shadow: none; }
+.download[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
+dt { color: var(--slate); }
+dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
+.hash { font-family: var(--mono); font-size: 12.5px; }
+ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
+.note { background: var(--panel-soft); border: 1px solid var(--line); color: var(--navy); border-radius: 8px; padding: 10px 12px; font-size: 14px; }
+.older { display: grid; gap: 8px; }
+.older a, a.status { color: var(--blue); }
+.status { color: var(--slate); font-size: 14px; }
+</style>
+</head>
+<body>
+<main>
+  <div>
+    <a class="back" href="./">&#8592; Emberwatch Lore</a>
+    <div class="title-row"><img class="app-icon" src="emberwatch-icon.png" alt="Emberwatch icon" width="64" height="64"><h1>Emberwatch</h1></div>
+    <p class="sub">Android build — install it directly on your phone (sideload).</p>
+  </div>
+
+  <section class="card" aria-labelledby="latest-label">
+    <div class="label" id="latest-label">Latest build</div>
+    <a class="download" id="dl" href="https://github.com/lumizeta/lumizeta.github.io/releases/latest">Download APK</a>
+    <dl>
+      <dt>Build</dt><dd id="ver">—</dd>
+      <dt>Date</dt><dd id="date">—</dd>
+      <dt>Size</dt><dd id="size">—</dd>
+      <dt>Requires</dt><dd>Android 8.0+ (API 26), arm64</dd>
+      <dt>SHA-256</dt><dd class="hash" id="sha">—</dd>
+    </dl>
+    <div class="note" id="whatsnew" hidden><strong>What's new</strong><div id="notes" style="white-space: pre-line"></div></div>
+    <div class="status" id="status">Loading…</div>
+    <a class="status" href="https://github.com/lumizeta/lumizeta.github.io/releases">All builds on GitHub</a>
+  </section>
+
+  <section class="card" aria-labelledby="install-label">
+    <div class="label" id="install-label">How to install</div>
+    <ol>
+      <li>Tap <strong>Download APK</strong> and let the download finish.</li>
+      <li>Open the file from the notification or your Downloads folder.</li>
+      <li>If Android blocks it, allow <strong>Install unknown apps</strong> for your browser (Settings › Apps › your
+        browser › Install unknown apps), then open the file again.</li>
+      <li>To update, install the new build over the old one.</li>
+    </ol>
+    <div class="note">Private test build. Not on any app store.</div>
+  </section>
+
+  <section class="card" id="older-card" hidden aria-labelledby="older-label">
+    <div class="label" id="older-label">Older builds</div>
+    <div class="older" id="older"></div>
+  </section>
+</main>
+<script>
+(function () {
+  const $ = id => document.getElementById(id);
+  const mb = b => (b / 1048576).toFixed(1) + " MB";
+  // Builds live on this repo's GitHub Releases (public, no sign-in). The button already points at
+  // /releases/latest; when the API answers, it is upgraded to the APK file itself and the details are filled in.
+  const apkOf = rel => (rel.assets || []).find(a => /\.apk$/i.test(a.name));
+  const day = iso => (iso || "").slice(0, 10);
+  // The newest build is the release GitHub marks "Latest". The list endpoint orders by the tagged commit's date,
+  // which ties when two tags share a commit, so older builds are sorted by publish date instead.
+  const API = "https://api.github.com/repos/lumizeta/lumizeta.github.io/releases";
+  const getJson = url => fetch(url).then(r => { if (!r.ok) throw new Error(r.status); return r.json(); });
+  Promise.all([getJson(API + "/latest").catch(() => null), getJson(API + "?per_page=10")])
+    .then(([latest, list]) => {
+      const rels = list.filter(r => !r.draft && !r.prerelease && apkOf(r))
+        .sort((a, b) => (b.published_at || "").localeCompare(a.published_at || ""));
+      if (latest && apkOf(latest)) {
+        const i = rels.findIndex(r => r.id === latest.id);
+        if (i > 0) rels.unshift(rels.splice(i, 1)[0]);
+        else if (i < 0) rels.unshift(latest);
+      }
+      if (!rels.length) { $("status").textContent = "No build has been uploaded yet."; return; }
+      const rel = rels[0], apk = apkOf(rel);
+      const dl = $("dl");
+      dl.href = apk.browser_download_url;
+      dl.textContent = "Download APK · " + rel.tag_name;
+      $("ver").textContent = apk.name.replace(/\.apk$/i, "");
+      $("date").textContent = day(rel.published_at);
+      $("size").textContent = mb(apk.size);
+      $("sha").textContent = (apk.digest || "").replace(/^sha256:/, "") || "—";
+      $("status").textContent = "";
+      // the release's own description, minus the checksum line (the sha256 is shown above)
+      const notes = (rel.body || "").replace(/\s*sha-?256:?\s*[0-9a-f]{64}\s*/gi, " ").trim();
+      if (notes) { $("notes").textContent = notes; $("whatsnew").hidden = false; }
+      const older = rels.slice(1, 4);
+      if (older.length) {
+        $("older-card").hidden = false;
+        $("older").innerHTML = older.map(r => {
+          const a = apkOf(r);
+          return `<a href="${a.browser_download_url}">${r.tag_name}</a> ` +
+            `<span class="status">· ${day(r.published_at)} · ${mb(a.size)}</span>`;
+        }).join("<br>");
+      }
+    })
+    .catch(() => { $("status").textContent = "Details unavailable right now — the button still opens the latest build."; });
+})();
+</script>
+</body>
+</html>

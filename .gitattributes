@@ -1,0 +1,4 @@
+# Game build files: never touch line endings or bytes (the parts are named by their content hash)
+play/** -text
+*.bin binary
+*.wasm binary

@@ -1,9 +1,266 @@
 {
- "id": "6348f736ac0e72ec",
- "bytes": 26609724,
+ "id": "f8d0dbc9768dc0a7",
+ "bytes": 26610371,
  "files": 2609,
- "unpacked": 296791274,
+ "unpacked": 296791549,
  "parts": [
-  "data.0.bin?v=6348f736ac0e72ec"
+  {
+   "file": "d/bf08870f4031537e.bin",
+   "bytes": 1396247,
+   "group": "avatars",
+   "files": 88
+  },
+  {
+   "file": "d/2a3974b8b96fa503.bin",
+   "bytes": 1038282,
+   "group": "avatars",
+   "files": 64
+  },
+  {
+   "file": "d/ba5b0baabb8df97c.bin",
+   "bytes": 1594139,
+   "group": "avatars",
+   "files": 98
+  },
+  {
+   "file": "d/c82c615c21951249.bin",
+   "bytes": 1448771,
+   "group": "avatars",
+   "files": 98
+  },
+  {
+   "file": "d/2d7e3afaf9a6478b.bin",
+   "bytes": 1207005,
+   "group": "avatars",
+   "files": 74
+  },
+  {
+   "file": "d/827006e9fa086064.bin",
+   "bytes": 1236027,
+   "group": "avatars",
+   "files": 81
+  },
+  {
+   "file": "d/7a8ab232772be48b.bin",
+   "bytes": 1656498,
+   "group": "avatars",
+   "files": 101
+  },
+  {
+   "file": "d/a9a15831b5edc0ce.bin",
+   "bytes": 1673906,
+   "group": "avatars",
+   "files": 103
+  },
+  {
+   "file": "d/fdd25a506f1078a4.bin",
+   "bytes": 2147304,
+   "group": "characters",
+   "files": 227
+  },
+  {
+   "file": "d/03ae64d173a51829.bin",
+   "bytes": 1782884,
+   "group": "characters",
+   "files": 203
+  },
+  {
+   "file": "d/2befd0b5385ea033.bin",
+   "bytes": 1898452,
+   "group": "characters",
+   "files": 225
+  },
+  {
+   "file": "d/db7fb16b8f8c7ff2.bin",
+   "bytes": 2149717,
+   "group": "characters",
+   "files": 214
+  },
+  {
+   "file": "d/888e74df2995c838.bin",
+   "bytes": 7508,
+   "group": "events",
+   "files": 1
+  },
+  {
+   "file": "d/561d4fe9906d7154.bin",
+   "bytes": 48225,
+   "group": "grids",
+   "files": 116
+  },
+  {
+   "file": "d/aac4a78822f0d11d.bin",
+   "bytes": 200545,
+   "group": "modes/autochess",
+   "files": 18
+  },
+  {
+   "file": "d/d27f3818b530d9a3.bin",
+   "bytes": 183486,
+   "group": "modes/autochess",
+   "files": 18
+  },
+  {
+   "file": "d/c65d788538c64621.bin",
+   "bytes": 139236,
+   "group": "modes/genshin",
+   "files": 8
+  },
+  {
+   "file": "d/743b382da68c1c8f.bin",
+   "bytes": 181824,
+   "group": "modes/genshin",
+   "files": 9
+  },
+  {
+   "file": "d/a7e664819c94c1ae.bin",
+   "bytes": 153188,
+   "group": "modes/neo",
+   "files": 16
+  },
+  {
+   "file": "d/55de933fababe596.bin",
+   "bytes": 233345,
+   "group": "modes/roguelike",
+   "files": 30
+  },
+  {
+   "file": "d/6fd9d19207abe490.bin",
+   "bytes": 115540,
+   "group": "modes/roguelike",
+   "files": 17
+  },
+  {
+   "file": "d/56389611bb52dccf.bin",
+   "bytes": 104165,
+   "group": "modes/roguelike",
+   "files": 16
+  },
+  {
+   "file": "d/2f056f798e684498.bin",
+   "bytes": 544603,
+   "group": "modes/roguelike",
+   "files": 38
+  },
+  {
+   "file": "d/9ad9b84ef97c1f99.bin",
+   "bytes": 93705,
+   "group": "modes/roguelike",
+   "files": 9
+  },
+  {
+   "file": "d/acccaf280e0e495a.bin",
+   "bytes": 287264,
+   "group": "modes/roguelike",
+   "files": 29
+  },
+  {
+   "file": "d/8c3fc89bed12c108.bin",
+   "bytes": 287347,
+   "group": "modes/roguelike",
+   "files": 29
+  },
+  {
+   "file": "d/fac394dcf1faa80d.bin",
+   "bytes": 110161,
+   "group": "modes/roguelike",
+   "files": 21
+  },
+  {
+   "file": "d/db6a3af8f051db0a.bin",
+   "bytes": 36186,
+   "group": "modes/scoring",
+   "files": 1
+  },
+  {
+   "file": "d/87ab999afc0b3508.bin",
+   "bytes": 102994,
+   "group": "modes/simuniverse",
+   "files": 16
+  },
+  {
+   "file": "d/cbfc86a712f3a895.bin",
+   "bytes": 158388,
+   "group": "modes/simuniverse",
+   "files": 26
+  },
+  {
+   "file": "d/ec41bef1918ff859.bin",
+   "bytes": 196023,
+   "group": "modes/simuniverse",
+   "files": 31
+  },
+  {
+   "file": "d/90ac29c212d2c12d.bin",
+   "bytes": 219932,
+   "group": "modes/simuniverse",
+   "files": 18
+  },
+  {
+   "file": "d/0d067ceaef3b4c25.bin",
+   "bytes": 106289,
+   "group": "modes/simuniverse",
+   "files": 13
+  },
+  {
+   "file": "d/7e7f38035bad1b74.bin",
+   "bytes": 73373,
+   "group": "modes/simuniverse",
+   "files": 11
+  },
+  {
+   "file": "d/070a12ae9d0af3a3.bin",
+   "bytes": 161912,
+   "group": "modes/simuniverse",
+   "files": 30
+  },
+  {
+   "file": "d/dc700a20b6b56f92.bin",
+   "bytes": 284098,
+   "group": "modes/simuniverse",
+   "files": 41
+  },
+  {
+   "file": "d/fd1dfc08ac65c68c.bin",
+   "bytes": 463544,
+   "group": "root",
+   "files": 2
+  },
+  {
+   "file": "d/4b411eefc2ad95bd.bin",
+   "bytes": 79043,
+   "group": "root",
+   "files": 4
+  },
+  {
+   "file": "d/9f7126af580cb8df.bin",
+   "bytes": 18798,
+   "group": "root",
+   "files": 1
+  },
+  {
+   "file": "d/4dfca034d04dc296.bin",
+   "bytes": 4555,
+   "group": "root",
+   "files": 1
+  },
+  {
+   "file": "d/681aa1d6070ee2e7.bin",
+   "bytes": 1439224,
+   "group": "stages",
+   "files": 225
+  },
+  {
+   "file": "d/ab3975585d40f13c.bin",
+   "bytes": 1295197,
+   "group": "stages",
+   "files": 221
+  },
+  {
+   "file": "d/4fdaf2973ffd4f6b.bin",
+   "bytes": 51441,
+   "group": "tables",
+   "files": 17
+  }
  ]
 }

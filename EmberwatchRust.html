@@ -57,6 +57,9 @@ h1 { font-size: 28px; line-height: 1.2; margin: 6px 0 0; font-weight: 800; font-
 }
 .download:active { transform: translateY(1px); box-shadow: none; }
 .download[aria-disabled="true"] { opacity: .45; pointer-events: none; }
+/* the browser build: BA's blue button, white text */
+.download.play { background: linear-gradient(180deg, #2fb4ec, var(--blue)); border-color: #0b77a6; color: #fff; }
+.download.play::after { background: linear-gradient(90deg, rgba(119, 222, 255, 0), rgba(119, 222, 255, .45)); }
 dl { margin: 0; display: grid; grid-template-columns: auto 1fr; gap: 6px 14px; }
 dt { color: var(--slate); }
 dd { margin: 0; min-width: 0; overflow-wrap: anywhere; }
@@ -73,8 +76,14 @@ ol { margin: 0; padding-left: 20px; display: grid; gap: 6px; }
   <div>
     <a class="back" href="./">&#8592; Emberwatch Lore</a>
     <div class="title-row"><img class="app-icon" src="emberwatch-icon.png" alt="Emberwatch icon" width="64" height="64"><h1>Emberwatch</h1></div>
-    <p class="sub">Android build — install it directly on your phone (sideload).</p>
+    <p class="sub">Play it in your browser, or install the Android build on your phone (sideload).</p>
   </div>
+
+  <section class="card" aria-labelledby="web-label">
+    <div class="label" id="web-label">Play in browser</div>
+    <a class="download play" href="play/">&#9654; Play in browser</a>
+    <p class="status">2D battle view; best on a desktop browser; about 40 MB on first load.</p>
+  </section>
 
   <section class="card" aria-labelledby="latest-label">
     <div class="label" id="latest-label">Latest build</div>

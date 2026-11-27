@@ -1,8 +1,8 @@
 {
- "id": "f8d0dbc9768dc0a7",
- "bytes": 26610371,
- "files": 2609,
- "unpacked": 296791549,
+ "id": "4b2d59473b4d92f7",
+ "bytes": 28816091,
+ "files": 2662,
+ "unpacked": 299895514,
  "parts": [
   {
    "file": "d/bf08870f4031537e.bin",
@@ -113,8 +113,14 @@
    "files": 9
   },
   {
-   "file": "d/a7e664819c94c1ae.bin",
-   "bytes": 153188,
+   "file": "d/3f853fabef3ffa40.bin",
+   "bytes": 14244,
+   "group": "modes/launch",
+   "files": 3
+  },
+  {
+   "file": "d/73968f1a7cadc1de.bin",
+   "bytes": 167457,
    "group": "modes/neo",
    "files": 16
   },
@@ -221,6 +227,12 @@
    "files": 41
   },
   {
+   "file": "d/8938ba409fcead4c.bin",
+   "bytes": 96134,
+   "group": "modes/vn",
+   "files": 1
+  },
+  {
    "file": "d/fd1dfc08ac65c68c.bin",
    "bytes": 463544,
    "group": "root",
@@ -261,6 +273,24 @@
    "bytes": 51441,
    "group": "tables",
    "files": 17
+  },
+  {
+   "file": "d/7af278cbf33325d7.bin",
+   "bytes": 27843,
+   "group": "ui",
+   "files": 7
+  },
+  {
+   "file": "d/eafbe28bfa832be4.bin",
+   "bytes": 1192363,
+   "group": "vn",
+   "files": 23
+  },
+  {
+   "file": "d/76e3a29a27f50253.bin",
+   "bytes": 860867,
+   "group": "vn",
+   "files": 19
   }
  ]
 }
